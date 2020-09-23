@@ -18,20 +18,25 @@ export default (props) => {
 					const image = product.images[0];
 
 					return (
-						<div className="product-card" key={product.id + i}>
+						<div
+							className="product-card"
+							key={product.id + i}
+							onClick={(e) => handleClick(e, product.id)}>
 							{image ? (
-								<img src={image.src} alt={product.title} />
+								<img
+									className="product-card__image"
+									src={image.src}
+									alt={product.title}
+								/>
 							) : null}
-							<div>
-								<h2 className="product-card__title">{product.title}</h2>
-								<p className="product-card__price">${product.variants[0].price}</p>
+							<div className="product-card__info">
+								{product.title && (
+									<h2 className="product-card__title">{product.title}</h2>
+								)}
+								{product.variants && (
+									<p className="product-card__price">${product.variants[0].price}</p>
+								)}
 							</div>
-							<button
-								className="product-card__link"
-								onClick={(e) => handleClick(e, product.id)}
-							>
-								View product
-							</button>
 						</div>
 					)
 				})}

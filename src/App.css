@@ -41,6 +41,10 @@ a {
 	gap: 1.875rem;
 }
 
+.product-card {
+	cursor: pointer;
+}
+
 .product-page {
 	width: 100%;
 	max-width: 75rem;
