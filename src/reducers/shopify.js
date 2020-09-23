@@ -31,10 +31,10 @@ export default (state = initialState, action) => {
 
 function getShop() {
 	return (dispatch) => {
-		client.shop.fetchInfo().then((resp) => {
+		client.shop.fetchInfo().then((payload) => {
 			dispatch({
 				type: SHOP_FOUND,
-				payload: resp,
+				payload,
 			});
 		});
 	};
@@ -42,10 +42,10 @@ function getShop() {
 
 function getProducts() {
 	return (dispatch) => {
-		client.product.fetchAll().then((resp) => {
+		client.product.fetchAll().then((payload) => {
 			dispatch({
 				type: PRODUCTS_FOUND,
-				payload: resp,
+				payload,
 			});
 		});
 	};
@@ -53,14 +53,14 @@ function getProducts() {
 
 function getProduct(id) {
 	return async (dispatch) => {
-		const resp = await client.product.fetch(id);
+		const payload = await client.product.fetch(id);
 		
 		dispatch({
 			type: PRODUCT_FOUND,
-			payload: resp,
+			payload,
 		});
 
-		return resp;
+		return payload;
 	};
 };
 
